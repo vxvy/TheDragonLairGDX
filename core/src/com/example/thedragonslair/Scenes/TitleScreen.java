@@ -3,6 +3,7 @@ package com.example.thedragonslair.Scenes;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Align;
@@ -18,7 +19,7 @@ public class TitleScreen implements Screen {
         this.game = game;
         stage = new Stage(new ScreenViewport());
 
-        Label title = new Label("Title Screen", MyGdxGame.gameSkin,"big-black");
+        Label title = new Label("Title Screen", MyGdxGame.gameSkin);
         title.setAlignment(Align.center);
         title.setY(Gdx.graphics.getHeight()*2/3);
         title.setWidth(Gdx.graphics.getWidth());
@@ -32,7 +33,10 @@ public class TitleScreen implements Screen {
 
     @Override
     public void render(float delta) {
-
+        Gdx.gl.glClearColor(1, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        stage.act();
+        stage.draw();
     }
 
     @Override
