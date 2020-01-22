@@ -12,8 +12,6 @@ public class MyGdxGame extends Game {
 
 	@Override
 	public void create () {
-		gameSkin = new Skin(Gdx.files.internal("skin\\uiskin.json"));
-		this.setScreen(new TitleScreen(this));
 	}
 
 	@Override
