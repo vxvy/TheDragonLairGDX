@@ -2,9 +2,8 @@ package com.example.thedragonslair;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.example.thedragonslair.Scenes.TitleScreen;
+import com.example.thedragonslair.Scenes.Screens.GameMainMenu;
 
 
 public class MyGdxGame extends Game {
@@ -14,7 +13,9 @@ public class MyGdxGame extends Game {
 	@Override
 	public void create () {
 		gameSkin = new Skin(Gdx.files.internal("skin\\skinsMaster\\glassy\\skin\\glassy-ui.json"));
-		this.setScreen(new TitleScreen(this));
+//		gameSkin = new Skin(Gdx.files.internal("skin\\skinsMaster\\vhs\\skin\\vhs-ui.json"));
+//		gameSkin = new Skin(Gdx.files.internal("skin\\skinsMaster\\gdx-holo\\skin\\uiskin.json"));
+		this.setScreen(new GameMainMenu(this));
 	}
 
 	@Override
