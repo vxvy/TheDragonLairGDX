@@ -3,6 +3,8 @@ package com.example.thedragonslair.Assets;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 
+//Tutorial para entender el assets manager: https://www.youtube.com/watch?v=JXThbQir2gU
+
 public class Assets {
     public static final AssetManager assetManager = new AssetManager();
     public static final String pathWarrior0 ="\\warrior\\f0.png";
