@@ -1,4 +1,4 @@
-package com.example.thedragonslair.Scenes.Personajes;
+package com.example.thedragonslair.Personajes;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;

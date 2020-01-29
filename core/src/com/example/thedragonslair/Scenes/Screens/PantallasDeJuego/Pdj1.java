@@ -6,16 +6,28 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.example.thedragonslair.MyGdxGame;
+import com.example.thedragonslair.Personajes.MainCharacter.Siegfried;
+import com.example.thedragonslair.Scenes.Screens.GameMainMenu;
 
 public class Pdj1 extends PantallaDeJuegoBase {
 
-    //Hay que ir con cuidado porque
-    //no siempre se ejecuta el constructor antes del show
-    //por eso las nuevas instanciaciones están en el show
+//    //Hay que ir con cuidado porque
+//    //no siempre se ejecuta el constructor antes del show
+//    //por eso las nuevas instanciaciones están en el show
     public Pdj1(MyGdxGame estoEsElJuego) {
         super(estoEsElJuego);
+
     }
+
 
     private TiledMap mapPB; //tutorial seguido para los mapas: https://www.youtube.com/watch?v=zckxJn751Gw
     private OrthogonalTiledMapRenderer renderer;
@@ -29,6 +41,11 @@ public class Pdj1 extends PantallaDeJuegoBase {
 
         renderer = new OrthogonalTiledMapRenderer(mapPB);
         camera = new OrthographicCamera();
+
+        siegfried = new Siegfried();
+
+        stage = new Stage(new ScreenViewport());
+        stage.addActor(siegfried);
     }
 
     @Override
@@ -39,6 +56,10 @@ public class Pdj1 extends PantallaDeJuegoBase {
         renderer.setView(camera);
         renderer.render();
 //        renderer.render(arrayDeCapasQueCargar); Se puede elegir las capas que se quieren cargar
+
+        stage.draw();
+        stage.act(delta);
+
     }
 
     @Override
@@ -48,6 +69,8 @@ public class Pdj1 extends PantallaDeJuegoBase {
         camera.viewportHeight = height;
         camera.viewportWidth = width;
         camera.update();
+
+
     }
 
     @Override
@@ -69,7 +92,7 @@ public class Pdj1 extends PantallaDeJuegoBase {
     public void dispose() {
         super.dispose();
 
-
+        stage.dispose();
         mapPB.dispose();
         renderer.dispose();
     }

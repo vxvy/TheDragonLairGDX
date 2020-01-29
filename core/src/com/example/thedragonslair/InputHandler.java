@@ -2,7 +2,7 @@ package com.example.thedragonslair;
 
 import com.badlogic.gdx.InputAdapter;
 
-public class TouchesInGame extends InputAdapter {
+public class InputHandler extends InputAdapter {
 
     @Override
     public boolean keyUp(int keycode) {
