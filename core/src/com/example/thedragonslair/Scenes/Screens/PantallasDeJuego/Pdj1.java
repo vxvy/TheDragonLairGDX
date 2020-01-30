@@ -15,34 +15,42 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.example.thedragonslair.MyGdxGame;
+import com.example.thedragonslair.Personajes.Enemigos.Enemy;
 import com.example.thedragonslair.Personajes.MainCharacter.Siegfried;
 import com.example.thedragonslair.Scenes.Screens.GameMainMenu;
+
+import java.util.ArrayList;
 
 public class Pdj1 extends PantallaDeJuegoBase {
 
 //    //Hay que ir con cuidado porque
 //    //no siempre se ejecuta el constructor antes del show
 //    //por eso las nuevas instanciaciones están en el show
-    public Pdj1(MyGdxGame estoEsElJuego) {
-        super(estoEsElJuego);
-
-    }
-
 
     private TiledMap mapPB; //tutorial seguido para los mapas: https://www.youtube.com/watch?v=zckxJn751Gw
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera camera;
+    private ArrayList<Enemy> enemies;
+
+    public Pdj1(MyGdxGame estoEsElJuego) {
+        super(estoEsElJuego);
+
+        siegfried = new Siegfried();
+        enemies = new ArrayList<Enemy>();
+//        Enemy aux = new Enemy(1,0,);
+        //int enemyValue, int enemyCurrentFrame, Texture[] enemyFrames, int enemyAttackValue)
+
+    }
 
     @Override
     public void show() {
         super.show();
         TmxMapLoader loader = new TmxMapLoader();
-        mapPB = loader.load("maps\\stages\\floor0\\pb.tmx");
+        mapPB = loader.load("maps/stages/floor0/pb.tmx");
 
         renderer = new OrthogonalTiledMapRenderer(mapPB);
         camera = new OrthographicCamera();
 
-        siegfried = new Siegfried();
 
         stage = new Stage(new ScreenViewport());
         stage.addActor(siegfried);
@@ -95,5 +103,10 @@ public class Pdj1 extends PantallaDeJuegoBase {
         stage.dispose();
         mapPB.dispose();
         renderer.dispose();
+    }
+
+
+    public void setEnemies(ArrayList<Enemy> enemies) {
+
     }
 }

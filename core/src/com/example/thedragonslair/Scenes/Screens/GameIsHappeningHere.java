@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.example.thedragonslair.Assets.AssetsHandler;
+import com.example.thedragonslair.AssetsHandler;
 import com.example.thedragonslair.MyGdxGame;
 import com.example.thedragonslair.Scenes.GeneralScreen;
 import com.example.thedragonslair.Personajes.MainCharacter.Siegfried;
