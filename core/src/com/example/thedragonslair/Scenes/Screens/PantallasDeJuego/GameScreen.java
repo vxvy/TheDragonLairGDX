@@ -5,15 +5,17 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.example.thedragonslair.GameRenderer;
+import com.example.thedragonslair.AssetsCode.AssetsDescriptors;
 import com.example.thedragonslair.MyGdxGame;
-import com.example.thedragonslair.Scenes.GeneralScreen;
 import com.example.thedragonslair.Personajes.MainCharacter.Siegfried;
+import com.example.thedragonslair.Scenes.GeneralScreen;
+import com.example.thedragonslair.config.GameConfig;
+import com.example.thedragonslair.util.CodeResources;
 
+public class GameScreen extends GeneralScreen{
 
-//Aquí sucede el juego
-public abstract class PantallaDeJuegoBase extends GeneralScreen {
     protected Stage stage;
     protected Siegfried siegfried;
     protected OrthographicCamera camera;
@@ -22,8 +24,14 @@ public abstract class PantallaDeJuegoBase extends GeneralScreen {
     protected TiledMap mapPB; //tutorial seguido para los mapas: https://www.youtube.com/watch?v=zckxJn751Gw
     protected OrthogonalTiledMapRenderer mapRenderer;
 
-    public PantallaDeJuegoBase(MyGdxGame estoEsElJuego) {
+    public GameScreen(MyGdxGame estoEsElJuego) {
         super(estoEsElJuego);
+        stage = new Stage();
+        siegfried = new Siegfried();
+        camera = new OrthographicCamera();
+        viewport = new FitViewport(GameConfig.VISUAL_WORLD_WIDTH, GameConfig.VISUAL_WORLD_HEIGHT, camera);
+        shapeRenderer = new ShapeRenderer();
+
     }
 
     @Override
@@ -33,12 +41,18 @@ public abstract class PantallaDeJuegoBase extends GeneralScreen {
 
     @Override
     public void render(float delta) {
-        super.render(delta);
+        CodeResources.clearScreen();
+
+        drawDebuj();
+    }
+
+    public void drawDebuj(){
+
     }
 
     @Override
     public void resize(int width, int height) {
-        super.resize(width, height);
+        viewport.update(width,height);
     }
 
     @Override
@@ -58,6 +72,6 @@ public abstract class PantallaDeJuegoBase extends GeneralScreen {
 
     @Override
     public void dispose() {
-        super.dispose();
+        shapeRenderer.dispose();
     }
 }

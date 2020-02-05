@@ -1,6 +1,7 @@
 package com.example.thedragonslair.Scenes;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
 import com.example.thedragonslair.MyGdxGame;
 
 //Esta clase existe para que las demás hereden de ella
@@ -8,8 +9,11 @@ import com.example.thedragonslair.MyGdxGame;
 public abstract class GeneralScreen implements Screen {
 
     protected MyGdxGame estoEsElJuego;
+    protected AssetManager assetManager;
+
     public GeneralScreen(MyGdxGame estoEsElJuego){
         this.estoEsElJuego = estoEsElJuego;
+        this.assetManager = estoEsElJuego.getAssetManager();
     }
 
     @Override
@@ -39,7 +43,7 @@ public abstract class GeneralScreen implements Screen {
 
     @Override
     public void hide() {
-
+        this.dispose();
     }
 
     @Override

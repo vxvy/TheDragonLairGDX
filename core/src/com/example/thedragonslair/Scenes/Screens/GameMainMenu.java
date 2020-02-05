@@ -32,14 +32,14 @@ public class GameMainMenu extends GeneralScreen {
         title.setWidth(Gdx.graphics.getWidth());
         stage.addActor(title);
 
-        TextButton playButton = new TextButton("Enter the dungeon",MyGdxGame.gameSkin);
+        TextButton playButton = new TextButton("Enter the dungeon", MyGdxGame.gameSkin);
         playButton.setWidth(Gdx.graphics.getWidth()/2);
         playButton.setPosition(Gdx.graphics.getWidth()/2-playButton.getWidth()/2,Gdx.graphics.getHeight()/2-playButton.getHeight()/2);
         playButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                Gdx.app.log("123","Touched");
-                mainReferencia.setScreen(new Pdj1(mainReferencia));
+//                Gdx.app.log("123","Touched");
+                mainReferencia.setScreen(new GameIsHappeningHere(mainReferencia));
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {

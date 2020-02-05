@@ -5,8 +5,8 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.example.thedragonslair.Personajes.BasePersonaje;
 
-import static com.example.thedragonslair.CodeResources.DEFAULT_GRAVITY;
-import static com.example.thedragonslair.CodeResources.DEFAULT_SPEED;
+import static com.example.thedragonslair.util.CodeResources.DEFAULT_GRAVITY;
+import static com.example.thedragonslair.util.CodeResources.DEFAULT_SPEED;
 
 public class Enemy extends BasePersonaje {
 
