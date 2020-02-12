@@ -13,8 +13,6 @@ import com.example.thedragonslair.MyGdxGame;
 import com.example.thedragonslair.Scenes.GeneralScreen;
 import com.example.thedragonslair.Scenes.Screens.PantallasDeJuego.Pdj1;
 
-import sun.rmi.runtime.Log;
-
 //Pantalla de menu desde la que accedemos a juego
 public class GameMainMenu extends GeneralScreen {
 
