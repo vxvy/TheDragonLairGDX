@@ -3,14 +3,17 @@ package com.example.thedragonslair.AssetsCode;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class AssetsPaths {
-    public static final String WARRIORSPRITE0_PATH ="warrior/f0.png";
-    public static final String WARRIORSPRITE1_PATH ="warrior/f1.png";
-    public static final String WARRIORSPRITE2_PATH ="warrior/f2.png";
-    public static final String WARRIORSPRITE3_PATH ="warrior/f3.png";
-    public static final String WARRIORSPRITE4_PATH ="warrior/f4.png";
-    public static final String WARRIORSPRITE5_PATH ="warrior/f5.png";
-    public static final String WARRIORSPRITE6_PATH ="warrior/f6.png";
-    public static final String WARRIORSPRITE7_PATH ="warrior/f7.png";
+    public static final String BACKGROUND01_PATH ="menustuff/background/menuprovisionalbackground.png";
+
+
+    public static final String WARRIORSPRITE0_PATH ="warrior/corriendo/f0.png";
+    public static final String WARRIORSPRITE1_PATH ="warrior/corriendo/f1.png";
+    public static final String WARRIORSPRITE2_PATH ="warrior/corriendo/f2.png";
+    public static final String WARRIORSPRITE3_PATH ="warrior/corriendo/f3.png";
+    public static final String WARRIORSPRITE4_PATH ="warrior/corriendo/f4.png";
+    public static final String WARRIORSPRITE5_PATH ="warrior/corriendo/f5.png";
+    public static final String WARRIORSPRITE6_PATH ="warrior/corriendo/f6.png";
+    public static final String WARRIORSPRITE7_PATH ="warrior/corriendo/f7.png";
 
     public static final String ENEMY_WEAK0_PATH ="enemies/enemigo1/enemy1_00.png";
     public static final String ENEMY_WEAK1_PATH ="enemies/enemigo1/enemy1_00.png";

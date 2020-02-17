@@ -14,6 +14,8 @@ public abstract class GeneralScreen implements Screen {
     public GeneralScreen(MyGdxGame estoEsElJuego){
         this.estoEsElJuego = estoEsElJuego;
         this.assetManager = estoEsElJuego.getAssetManager();
+
+
     }
 
     @Override

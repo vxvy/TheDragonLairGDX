@@ -1,29 +1,72 @@
 package com.example.thedragonslair.Personajes.MainCharacter;
 
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.example.thedragonslair.Personajes.BasePersonaje;
 
-public class Siegfried extends BasePersonaje {
+import javax.xml.bind.annotation.XmlType;
 
-    private Texture[] siegfriedWalking;
-    private Texture[] siegfriedAttaking;
-    private Texture[] siegfriedDying;
+public class Siegfried extends BasePersonaje implements InputProcessor {
 
+    @Override
+    public boolean keyDown(int keycode) {
+        return false;
+    }
+
+    @Override
+    public boolean keyUp(int keycode) {
+        return false;
+    }
+
+    @Override
+    public boolean keyTyped(char character) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        this.siegfriedEstado = eEstado.CORRIENDO;
+        this.setPosition(screenX,screenY);
+
+
+
+        return false;
+    }
+
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        return false;
+    }
+
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
+
+    @Override
+    public boolean scrolled(int amount) {
+        return false;
+    }
+
+    public enum eEstado{
+        QUIETO,
+        ATACANDO,
+        CORRIENDO,
+        MURIENDO
+    }
+
+//    private Texture[] siegfriedWalking;
+//    private Texture[] siegfriedAttaking;
+//    private Texture[] siegfriedDying;
+    private eEstado siegfriedEstado;
 
     public Siegfried() {
-        this.siegfriedWalking =  new Texture[]{
-          new Texture("warrior/f0.png"),
-          new Texture("warrior/f1.png"),
-          new Texture("warrior/f2.png"),
-          new Texture("warrior/f3.png"),
-          new Texture("warrior/f4.png"),
-          new Texture("warrior/f5.png"),
-          new Texture("warrior/f6.png"),
-          new Texture("warrior/f7.png")
-        };
-        pnjTextureArr = siegfriedWalking; //Esto es realmente innecesario
-
 
     }
 
@@ -34,6 +77,20 @@ public class Siegfried extends BasePersonaje {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
+        switch (siegfriedEstado){
+            case ATACANDO:
+                //Cambia por frames atacando
+//                pnjTextureArr;
+                break;
+            case MURIENDO:
+                break;
+            case QUIETO:
+                break;
+            case CORRIENDO:
+            default:
+
+                break;
+        }
         batch.draw(pnjTextureArr[pnjTextureArrPosition],getX(),getY());
     }
 }
