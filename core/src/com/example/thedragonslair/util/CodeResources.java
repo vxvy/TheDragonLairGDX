@@ -38,8 +38,6 @@ public class CodeResources {
 
     public static final Vector2 testVelVect2 = new Vector2(10, 0);
 
-    public static final int DEFAULT_CELL_SIZE = 1; //world units
-
 //    public static final Enemy EASY_ENEMY =
 //            new Enemy(EASY_MONSTER_VALUE, testVelVect2, 0, 0, 2, 2, 1, , 0);
 //    public static final Enemy SUB_ENEMY =
@@ -121,5 +119,13 @@ public class CodeResources {
         clearScreen(Color.BLACK);
     }
 
+
+    public static void waitmillisecs(long milllies){
+        try {
+            Thread.sleep(milllies);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

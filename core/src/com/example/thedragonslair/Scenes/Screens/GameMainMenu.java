@@ -19,9 +19,8 @@ public class GameMainMenu extends GeneralScreen {
     public MyGdxGame mainReferencia;
     private Stage stage;
 
-    public GameMainMenu(MyGdxGame estoEsElJuego) {
-        super(estoEsElJuego);
-        this.mainReferencia = this.estoEsElJuego;
+    public GameMainMenu(MyGdxGame myGdxGame) {
+        super(myGdxGame);
         stage = new Stage(new ScreenViewport());
 
         Label title = new Label("Title Screen", mainReferencia.gameSkin,"big-black");
@@ -64,13 +63,11 @@ public class GameMainMenu extends GeneralScreen {
 
     @Override
     public void show() {
-        super.show();
         Gdx.input.setInputProcessor(stage);
     }
 
     @Override
     public void render(float delta) {
-        super.render(delta);
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.act();
@@ -79,27 +76,25 @@ public class GameMainMenu extends GeneralScreen {
 
     @Override
     public void resize(int width, int height) {
-        super.resize(width, height);
     }
 
     @Override
     public void pause() {
-        super.pause();
+
     }
 
     @Override
     public void resume() {
-        super.resume();
+
     }
 
     @Override
     public void hide() {
-        super.hide();
+
     }
 
     @Override
     public void dispose() {
-        super.dispose();
         stage.dispose();
     }
 }

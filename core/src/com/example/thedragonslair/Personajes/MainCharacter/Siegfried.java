@@ -1,6 +1,7 @@
 package com.example.thedragonslair.Personajes.MainCharacter;
 
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.example.thedragonslair.Personajes.BasePersonaje;
@@ -67,7 +68,9 @@ public class Siegfried extends BasePersonaje implements InputProcessor {
     private eEstado siegfriedEstado;
 
     public Siegfried() {
+//    public Siegfried(Texture currentTexture) {
 
+//        pnjCurrentTexture = currentTexture;
     }
 
     @Override

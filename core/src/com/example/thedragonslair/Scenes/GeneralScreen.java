@@ -2,54 +2,20 @@ package com.example.thedragonslair.Scenes;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.example.thedragonslair.MyGdxGame;
 
 //Esta clase existe para que las demás hereden de ella
 //Así, todas tendrán acceso al juego
 public abstract class GeneralScreen implements Screen {
 
-    protected MyGdxGame estoEsElJuego;
+    protected MyGdxGame isGame;
     protected AssetManager assetManager;
+    protected SpriteBatch batch;
 
-    public GeneralScreen(MyGdxGame estoEsElJuego){
-        this.estoEsElJuego = estoEsElJuego;
-        this.assetManager = estoEsElJuego.getAssetManager();
-
-
-    }
-
-    @Override
-    public void show() {
-
-    }
-
-    @Override
-    public void render(float delta) {
-
-    }
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-        this.dispose();
-    }
-
-    @Override
-    public void dispose() {
-
+    public GeneralScreen(MyGdxGame myGdxGame){
+        isGame = myGdxGame;
+        assetManager = isGame.getAssetManager();
+        batch = isGame.getBatch();
     }
 }

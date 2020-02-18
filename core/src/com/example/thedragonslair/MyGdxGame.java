@@ -8,8 +8,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Logger;
-import com.example.thedragonslair.Scenes.Screens.GameMainMenu;
-import com.example.thedragonslair.util.LoadingScreen;
+import com.example.thedragonslair.Scenes.Screens.loading.Loading;
 
 //Game incluye  todo lo que necesitamos de AplicationAdapter
 //AplicationAdapter tiene los métodos de AplicationListener (create, dispose, etc.)
@@ -23,9 +22,10 @@ public class MyGdxGame extends Game {
 	private SpriteBatch batch;
 
 	/**
-	 * El constructor tiene menos prioridad que el create(),
-	 * en esta cclase, por lo que lo mantendremos vacío
+	 * El constructor tiene menos prioridad que el create()
+	 * en esta clase, por lo que lo mantendremos vacío
 	 */
+
 	public MyGdxGame() {
 		super();
 	}
@@ -47,8 +47,12 @@ public class MyGdxGame extends Game {
 
 		batch = new SpriteBatch();
 
-		this.setScreen(new GameMainMenu(this));
-//		this.setScreen(new LoadingScreen(this)); //Sólo disponible cuando extends Game
+		//loading assets
+		assetManager = new AssetManager();
+		assetManager.getLogger().setLevel(Logger.DEBUG);
+
+		this.setScreen(new Loading(this));
+//		this.setScreen(new GameScreen(this));
 	}
 
 
@@ -111,21 +115,29 @@ public class MyGdxGame extends Game {
 	// GETTERS AND SETTERS
 	//***************************************************
 
-
+	/**
+	 * Método propio de la clase Game,
+	 * permite cambiar de escena fácilmente
+	 * @param screen Pantalla a la que cambiaremos, es necesario que herede de Screen
+	 */
 	@Override
 	public void setScreen(Screen screen) {
 		super.setScreen(screen);
 	}
 
-	@Override
-	public Screen getScreen() {
-		return super.getScreen();
-	}
-
+	/**
+	 * Método para obtener el gestor de assets
+	 * @return el gestor de assets contiene el contenido "no-código" del juego
+	 */
 	public AssetManager getAssetManager() {
 		return assetManager;
 	}
 
+	/**
+	 * El spriteBatch es la capa que usamos para dibujar.
+	 * Podemos usar batch o stage.
+	 * @return batch correspondiente al juego, lo instanciamos una sola vez porque es muy pesado
+	 */
 	public SpriteBatch getBatch() {
 		return batch;
 	}

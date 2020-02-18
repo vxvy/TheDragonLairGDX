@@ -19,19 +19,16 @@ import com.example.thedragonslair.Scenes.Screens.PantallasDeJuego.Pdj1;
 
 public class GameIsHappeningHere extends GeneralScreen {
 
-    public MyGdxGame esteEsElJuego;
 //    Siegfried siegfried; //instanciamos el personaje principal al abrir el juego porque será el mismo en todas las pantallas de juego
-
     protected AssetsHandler assetsHandler;
     protected Stage stage;
 
 
-    public GameIsHappeningHere(MyGdxGame estoEsElJuego) {
-        super(estoEsElJuego);
-        this.esteEsElJuego = this.estoEsElJuego;
+    public GameIsHappeningHere(MyGdxGame myGdxGame) {
+        super(myGdxGame);
         stage = new Stage(new ScreenViewport());
 
-        Label title = new Label("Title Screen", esteEsElJuego.gameSkin,"big-black");
+        Label title = new Label("Title Screen", isGame.gameSkin,"big-black");
         title.setAlignment(Align.center);
         title.setY(Gdx.graphics.getHeight()*2/3);
         title.setWidth(Gdx.graphics.getWidth());
@@ -44,7 +41,7 @@ public class GameIsHappeningHere extends GeneralScreen {
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
 //                Gdx.app.log("123","Touched");
-                esteEsElJuego.setScreen(new GameScreen(esteEsElJuego));
+                isGame.setScreen(new GameScreen(isGame));
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -59,7 +56,7 @@ public class GameIsHappeningHere extends GeneralScreen {
         optionsButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                esteEsElJuego.setScreen(new GameMainMenu(esteEsElJuego));
+                isGame.setScreen(new GameMainMenu(isGame));
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -107,7 +104,6 @@ public class GameIsHappeningHere extends GeneralScreen {
 
     @Override
     public void dispose() {
-        super.dispose();
         stage.dispose();
         assetsHandler.dispose(); //Al tener la retirada de recursos en assetsHandler, sólo es necesaria una llamada
     }

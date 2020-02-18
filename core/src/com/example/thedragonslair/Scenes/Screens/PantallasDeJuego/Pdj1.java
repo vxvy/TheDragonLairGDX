@@ -32,8 +32,8 @@ public class Pdj1 extends PantallaDeJuegoBase {
     private OrthographicCamera camera;
     private ArrayList<Enemy> enemies;
 
-    public Pdj1(MyGdxGame estoEsElJuego) {
-        super(estoEsElJuego);
+    public Pdj1(MyGdxGame myGdxGame) {
+        super(myGdxGame);
 
         siegfried = new Siegfried();
         enemies = new ArrayList<Enemy>();
@@ -44,7 +44,6 @@ public class Pdj1 extends PantallaDeJuegoBase {
 
     @Override
     public void show() {
-        super.show();
         TmxMapLoader loader = new TmxMapLoader();
         mapPB = loader.load("maps/stages/floor0/pb.tmx");
 
@@ -72,8 +71,6 @@ public class Pdj1 extends PantallaDeJuegoBase {
 
     @Override
     public void resize(int width, int height) {
-        super.resize(width, height);
-
         camera.viewportHeight = height;
         camera.viewportWidth = width;
         camera.update();
@@ -83,22 +80,21 @@ public class Pdj1 extends PantallaDeJuegoBase {
 
     @Override
     public void pause() {
-        super.pause();
+
     }
 
     @Override
     public void resume() {
-        super.resume();
+
     }
 
     @Override
     public void hide() {
-        super.hide();
+
     }
 
     @Override
     public void dispose() {
-        super.dispose();
 
         stage.dispose();
         mapPB.dispose();

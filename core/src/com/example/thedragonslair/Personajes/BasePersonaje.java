@@ -104,5 +104,4 @@ public abstract class BasePersonaje extends Actor {
     public void setPnjBaseHitDamage(int pnjBaseHitDamage) {
         this.pnjBaseHitDamage = pnjBaseHitDamage;
     }
-
 }
