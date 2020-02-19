@@ -35,4 +35,6 @@ public class AssetsPaths {
     public static final String FONT_COMIC_PATH = "skin/skinsMaster/comic/skin/font-export.fnt";
 
     public static final String MAP_PB_PATH ="maps/stages/floor0/pb.tmx";
+
+    public static final String LOGO_PATH = "logo/logo.png";
 }

@@ -16,14 +16,13 @@ import com.example.thedragonslair.Scenes.Screens.PantallasDeJuego.Pdj1;
 //Pantalla de menu desde la que accedemos a juego
 public class GameMainMenu extends GeneralScreen {
 
-    public MyGdxGame mainReferencia;
     private Stage stage;
 
     public GameMainMenu(MyGdxGame myGdxGame) {
         super(myGdxGame);
         stage = new Stage(new ScreenViewport());
 
-        Label title = new Label("Title Screen", mainReferencia.gameSkin,"big-black");
+        Label title = new Label("Title Screen", isGame.gameSkin,"big-black");
         title.setAlignment(Align.center);
         title.setY(Gdx.graphics.getHeight()*2/3);
         title.setWidth(Gdx.graphics.getWidth());
@@ -36,7 +35,7 @@ public class GameMainMenu extends GeneralScreen {
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
 //                Gdx.app.log("123","Touched");
-                mainReferencia.setScreen(new GameIsHappeningHere(mainReferencia));
+                isGame.setScreen(new GameIsHappeningHere(isGame));
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -51,7 +50,7 @@ public class GameMainMenu extends GeneralScreen {
         optionsButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                mainReferencia.setScreen(new GameOptions(mainReferencia));
+                isGame.setScreen(new GameOptions(isGame));
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {

@@ -8,7 +8,8 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Logger;
-import com.example.thedragonslair.Scenes.Screens.loading.Loading;
+import com.example.thedragonslair.Scenes.Screens.PantallasDeJuego.GameScreen;
+import com.example.thedragonslair.Scenes.Screens.loading.LoadingScreen;
 
 //Game incluye  todo lo que necesitamos de AplicationAdapter
 //AplicationAdapter tiene los métodos de AplicationListener (create, dispose, etc.)
@@ -51,7 +52,7 @@ public class MyGdxGame extends Game {
 		assetManager = new AssetManager();
 		assetManager.getLogger().setLevel(Logger.DEBUG);
 
-		this.setScreen(new Loading(this));
+		this.setScreen(new LoadingScreen(this));
 //		this.setScreen(new GameScreen(this));
 	}
 

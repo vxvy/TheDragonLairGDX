@@ -2,15 +2,19 @@ package com.example.thedragonslair.Scenes.Screens.PantallasDeJuego;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.example.thedragonslair.AssetsCode.AssetsDescriptors;
 import com.example.thedragonslair.MyGdxGame;
-import com.example.thedragonslair.Personajes.MainCharacter.Siegfried;
+import com.example.thedragonslair.Personajes.Siegfried;
 import com.example.thedragonslair.Scenes.GeneralScreen;
 import com.example.thedragonslair.config.GameConfig;
 import com.example.thedragonslair.util.CeilingViewer;
@@ -25,25 +29,32 @@ public class GameScreen extends GeneralScreen implements InputProcessor {
     protected Viewport viewport;
     protected ShapeRenderer shapeRenderer;
     protected SpriteBatch batch;
-    protected boolean drawGrid = false;
+    protected boolean drawGrid = true;
+
+    protected Stage stage;
+    //Act llama a todos los act() de los actores añadidos <3
+
+    protected Siegfried siegfried;
 
 //    protected Stage stage;
-    protected Siegfried siegfried;
 //    protected TiledMap mapPB; //tutorial seguido para los mapas: https://www.youtube.com/watch?v=zckxJn751Gw
 //    protected OrthogonalTiledMapRenderer mapRenderer;
 
-    public GameScreen(MyGdxGame estoEsElJuego) {
-        super(estoEsElJuego);
+    public GameScreen(MyGdxGame myGdxGame) {
+        super(myGdxGame);
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
 
-//        Siegfried siegfried = new Siegfried();
         camera = new OrthographicCamera();
 //        viewport = new FitViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(), camera);
         viewport = new FitViewport(GameConfig.WU_WORLD_WIDTH,GameConfig.WU_WORLD_HEIGHT, camera);
         shapeRenderer = new ShapeRenderer();
         this.batch=new SpriteBatch();
 
-        Gdx.input.setInputProcessor(this);
+        stage = new Stage(viewport);
+
+        InputMultiplexer inputMultiplexer = new InputMultiplexer();
+        inputMultiplexer.addProcessor(this);
+        inputMultiplexer.addProcessor(stage);
    }
 
 //    @Override
@@ -53,7 +64,6 @@ public class GameScreen extends GeneralScreen implements InputProcessor {
 
     @Override
     public void show() {
-
     }
 
     @Override
@@ -80,6 +90,12 @@ public class GameScreen extends GeneralScreen implements InputProcessor {
             shapeRenderer.rect(10,10,100,100);
             shapeRenderer.end();
         }
+
+//        batch.draw(
+//                siegfried.getPnjCurrentTexture(),
+//                GameConfig.WU_DEFAULT_CELL_SIZE,
+//                GameConfig.WU_DEFAULT_CELL_SIZE);
+
     }
 
 
@@ -138,20 +154,21 @@ public class GameScreen extends GeneralScreen implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        drawGrid = !drawGrid;
         log.debug("Touch DOWN2 on "+screenX+" - "+screenY);;
-        return true;
+        return false;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         log.debug("Touch UP2 on "+screenX+" - "+screenY);
-        return true;
+        return false;
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
         log.debug("Touch DRAGGING2 on "+screenX+" - "+screenY);
-        return true;
+        return false;
     }
     @Override
     public boolean mouseMoved(int screenX, int screenY) {

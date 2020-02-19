@@ -12,19 +12,12 @@ public class Pdj0 extends PantallaDeJuegoBase {
     Texture background1;
     Siegfried siegfried;
 
-    public Pdj0(MyGdxGame estoEsElJuego) {
-        super(estoEsElJuego);
-        background1 = assetManager.get(AssetsDescriptors.BACKGROUND01_DES);
-
-        siegfried = new Siegfried();
+    public Pdj0(MyGdxGame myGdxGame) {
+        super(myGdxGame);
     }
 
     @Override
     public void show() {
-        assetManager.load(AssetsDescriptors.BACKGROUND01_DES);
-        assetManager.finishLoading();
-
-
 
     }
 

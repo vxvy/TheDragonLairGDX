@@ -11,6 +11,12 @@ public class AssetsDescriptors {
     //TESTTING 01
     //_________________________________________________
 
+    public static final AssetDescriptor<Texture> LOGO_DES
+            = new AssetDescriptor<Texture>(AssetsPaths.LOGO_PATH,Texture.class);
+
+    //_________________________________________________
+    //_________________________________________________
+
     public static final AssetDescriptor<Texture> BACKGROUND01_DES
             = new AssetDescriptor<Texture>(AssetsPaths.ENEMY_WEAK0_PATH, Texture.class);
 

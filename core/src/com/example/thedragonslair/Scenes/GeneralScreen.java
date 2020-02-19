@@ -10,12 +10,10 @@ import com.example.thedragonslair.MyGdxGame;
 public abstract class GeneralScreen implements Screen {
 
     protected MyGdxGame isGame;
-    protected AssetManager assetManager;
-    protected SpriteBatch batch;
 
     public GeneralScreen(MyGdxGame myGdxGame){
         isGame = myGdxGame;
-        assetManager = isGame.getAssetManager();
-        batch = isGame.getBatch();
     }
+
+
 }

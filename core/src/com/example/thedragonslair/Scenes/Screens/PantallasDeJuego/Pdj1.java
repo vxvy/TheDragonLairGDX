@@ -35,7 +35,7 @@ public class Pdj1 extends PantallaDeJuegoBase {
     public Pdj1(MyGdxGame myGdxGame) {
         super(myGdxGame);
 
-        siegfried = new Siegfried();
+//        siegfried = new Siegfried();
         enemies = new ArrayList<Enemy>();
 //        Enemy aux = new Enemy(1,0,);
         //int enemyValue, int enemyCurrentFrame, Texture[] enemyFrames, int enemyAttackValue)
