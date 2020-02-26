@@ -38,11 +38,11 @@ public class CodeResources {
 
     public static final Vector2 testVelVect2 = new Vector2(10, 0);
 
-//    public static final Enemy EASY_ENEMY =
+//    public standing final Enemy EASY_ENEMY =
 //            new Enemy(EASY_MONSTER_VALUE, testVelVect2, 0, 0, 2, 2, 1, , 0);
-//    public static final Enemy SUB_ENEMY =
+//    public standing final Enemy SUB_ENEMY =
 //            new Enemy(SUB_MONSTER_VALUE, testVelVect2, 0, 0, 5, 5, 2, , 0);
-//    public static final Enemy STRONG_ENEMY =
+//    public standing final Enemy STRONG_ENEMY =
 //            new Enemy(STRONG_MONSTER_VALUE, testVelVect2, 0, 0, 8, 8, 4, , 0);
 
     /**

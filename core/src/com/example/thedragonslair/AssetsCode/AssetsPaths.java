@@ -1,40 +1,35 @@
 package com.example.thedragonslair.AssetsCode;
 
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-
 public class AssetsPaths {
-    public static final String BACKGROUND01_PATH ="menustuff/background/menuprovisionalbackground.png";
 
+    public static final String SIEGFRIED_ACHIVEMENT_PATH ="siegfried/achivement/achivement.png";
+    public static final String SIEGFRIED_DYING_PATH ="siegfried/dying/dying.png";
+    public static final String SIEGFRIED_HITTING_PATH ="siegfried/hitting/64x64.png";
+    public static final String SIEGFRIED_HURT_PATH ="siegfried/hurt/hurt.png";
+    public static final String SIEGFRIED_JUMPING_PATH ="siegfried/jumping/jumping.png";
+    public static final String SIEGFRIED_STANDING_PATH ="siegfried/standing/standing.png";
+    public static final String SIEGFRIED_WALKING_PATH ="siegfried/running/running.png";
 
-    public static final String WARRIORSPRITE0_PATH ="warrior/corriendo/f0.png";
-    public static final String WARRIORSPRITE1_PATH ="warrior/corriendo/f1.png";
-    public static final String WARRIORSPRITE2_PATH ="warrior/corriendo/f2.png";
-    public static final String WARRIORSPRITE3_PATH ="warrior/corriendo/f3.png";
-    public static final String WARRIORSPRITE4_PATH ="warrior/corriendo/f4.png";
-    public static final String WARRIORSPRITE5_PATH ="warrior/corriendo/f5.png";
-    public static final String WARRIORSPRITE6_PATH ="warrior/corriendo/f6.png";
-    public static final String WARRIORSPRITE7_PATH ="warrior/corriendo/f7.png";
+    public static final String ENEMY1_64x160_PATH ="enemies/enemigo1/64x160.png";
 
-    public static final String ENEMY_WEAK0_PATH ="enemies/enemigo1/enemy1_00.png";
-    public static final String ENEMY_WEAK1_PATH ="enemies/enemigo1/enemy1_00.png";
+    public static final String ENEMY2_128x128_PATH ="enemies/enemigo2/128x128.png";
 
-    public static final String ENEMY_SUB0_PATH ="enemies/enemigo2/foe2_f0.png";
-    public static final String ENEMY_SUB1_PATH ="enemies/enemigo2/foe2_f1.png";
-    public static final String ENEMY_SUB2_PATH ="enemies/enemigo2/foe2_f2.png";
-    public static final String ENEMY_SUB3_PATH ="enemies/enemigo2/foe2_f3.png";
+    public static final String ENEMY3_128x64_PATH ="enemies/enemigo3/128x64.png";
 
+    public static final String PB_TILE_SUELO_PATH = "maps/stages/floor0/x1.png";
+    public static final String PB_TILE_PARED_PATH = "maps/stages/floor0/x2.png";
 
-    public static final String ENEMY_STRONG0_PATH ="enemies/enemigo3/foe3_f0.png";
-    public static final String ENEMY_STRONG1_PATH ="enemies/enemigo3/foe3_f1.png";
+    public static final String P1_TILE_SUELO_PATH = "maps/stages/floor1/y1.png";
+    public static final String P1_TILE_PARED_PATH = "maps/stages/floor1/y2.png";
 
-    public static final String ENEMY_STRONG_ATK_PATH ="enemies/enemigo3/foe3_atk.png";
+    public static final String P2_TILE_SUELO_PATH = "maps/stages/floor2/z1.png";
+    public static final String P2_TILE_PARED_PATH = "maps/stages/floor2/z2.png";
 
-    public static final String LLAMA1_PATH ="maps/flames/llama1.png";
-    public static final String LLAMA2_PATH ="maps/flames/llama2.png";
-
-    public static final String FONT_COMIC_PATH = "skin/skinsMaster/comic/skin/font-export.fnt";
-
-    public static final String MAP_PB_PATH ="maps/stages/floor0/pb.tmx";
+    public static final String LLAMAS_PATH ="maps/flames/flames32x32.png";
 
     public static final String LOGO_PATH = "logo/logo.png";
+    public static final String BACKGROUND01_PATH ="menustuff/background/menuprovisionalbackground.png";
+    public static final String CUT_TITLE_PATH = "logo/cut_title.png";
+
+
 }

@@ -8,14 +8,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.example.thedragonslair.AssetsCode.AssetsHandler;
 import com.example.thedragonslair.MyGdxGame;
 import com.example.thedragonslair.Scenes.GeneralScreen;
 import com.example.thedragonslair.Personajes.MainCharacter.Siegfried;
 import com.example.thedragonslair.Scenes.Screens.PantallasDeJuego.GameScreen;
-import com.example.thedragonslair.Scenes.Screens.PantallasDeJuego.Pdj1;
 
 public class GameIsHappeningHere extends GeneralScreen {
 

@@ -156,7 +156,7 @@ public class LoadingScreen extends GeneralScreen {
     private void loadStuff(){
         isGame.getAssetManager().load(AssetsDescriptors.LOGO_DES);
 
-        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_ANDANDO00_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_ANDANDO_DES);
         isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_ANDANDO01_DES);
         isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_ANDANDO02_DES);
         isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_ANDANDO03_DES);
