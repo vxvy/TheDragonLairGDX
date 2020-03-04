@@ -6,16 +6,13 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.example.thedragonslair.GameRenderer;
 import com.example.thedragonslair.MyGdxGame;
 import com.example.thedragonslair.Scenes.GeneralScreen;
-import com.example.thedragonslair.Personajes.MainCharacter.Siegfried;
 
 
 //Aquí sucede el juego
 public abstract class PantallaDeJuegoBase extends GeneralScreen {
     protected Stage stage;
-    protected Siegfried siegfried;
     protected OrthographicCamera camera;
     protected Viewport viewport;
     protected ShapeRenderer shapeRenderer;

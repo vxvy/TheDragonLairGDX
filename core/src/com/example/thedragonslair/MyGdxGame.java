@@ -18,7 +18,7 @@ public class MyGdxGame extends Game {
 
 	public static final Logger log = new Logger(MyGdxGame.class.getName(), Logger.DEBUG);
 
-	public static Skin gameSkin;
+//	public static Skin gameSkin;
 	private AssetManager assetManager;
 	private SpriteBatch batch;
 
@@ -40,8 +40,7 @@ public class MyGdxGame extends Game {
 														// Con esto se habilitan y se determina un canal
 //		log.debug("placeholder");						// Ejemplo imperecedero de log.
 
-		gameSkin = new Skin(Gdx.files.internal("skin\\skinsMaster\\glassy\\skin\\glassy-ui.json"));
-//		gameSkin = new Skin(Gdx.files.internal("skin\\skinsMaster\\vhs\\skin\\vhs-ui.json"));
+//		gameSkin = new Skin(Gdx.files.internal("skin\\skinsMaster\\glassy\\skin\\glassy-ui.json"));
 //		gameSkin = new Skin(Gdx.files.internal("skin\\skinsMaster\\gdx-holo\\skin\\uiskin.json"));
 
 		assetManager = new AssetManager();
@@ -68,12 +67,11 @@ public class MyGdxGame extends Game {
 	}
 
 	/**
-	 * Libera recursos
+	 * Libera recursos al cerrar el juego
 	 */
 
 	@Override
 	public void dispose () {
-		gameSkin.dispose();
 		assetManager.dispose();
 		batch.dispose();
 	}

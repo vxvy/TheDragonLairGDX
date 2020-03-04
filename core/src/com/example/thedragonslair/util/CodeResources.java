@@ -3,11 +3,9 @@ package com.example.thedragonslair.util;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Logger;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import com.example.thedragonslair.Personajes.Enemigos.Enemy;
+import com.example.thedragonslair.Personajes.BaseActor;
 import com.example.thedragonslair.PowerUps.PowerUpBase;
 
 import java.security.InvalidParameterException;
@@ -52,8 +50,8 @@ public class CodeResources {
      * @param dungeonDifficulty a más dificultad más montruos fuertes saldrán en la sala
      * @return arraylist de enemigos presentes en la sala
      */
-    public static ArrayList<Enemy> generaEnemigos(int dungeonLevel, int dungeonDifficulty) {
-        ArrayList<Enemy> enemigosNivel = new ArrayList<Enemy>();
+    public static ArrayList<BaseActor> generaEnemigos(int dungeonLevel, int dungeonDifficulty) {
+        ArrayList<BaseActor> enemigosNivel = new ArrayList<BaseActor>();
         int easyPercent = 0;
         int subPercent = 0;
         int hardPercent = 0;
@@ -94,8 +92,8 @@ public class CodeResources {
 //                enemigosNivel.add(STRONG_ENEMY);
 //            }
 
-            for (Enemy e : enemigosNivel) {
-                dungeonContent += e.getEnemyValue();
+            for (BaseActor e : enemigosNivel) {
+//                dungeonContent += e.getEnemyValue();
             }
         } while (dungeonContent < dungeonLevel);
 

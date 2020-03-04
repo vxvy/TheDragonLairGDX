@@ -2,10 +2,16 @@ package com.example.thedragonslair.Scenes.Screens.loading;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetDescriptor;
+import com.badlogic.gdx.assets.loaders.SkinLoader;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -15,12 +21,18 @@ import com.example.thedragonslair.MyGdxGame;
 import com.example.thedragonslair.Scenes.GeneralScreen;
 import com.example.thedragonslair.Scenes.Screens.GameMainMenu;
 import com.example.thedragonslair.config.GameConfig;
+import com.example.thedragonslair.config.GameStrings;
 import com.example.thedragonslair.util.CodeResources;
+
+import static com.example.thedragonslair.config.GameConfig.LANGUAGE_SPA;
+import static com.example.thedragonslair.config.GameConfig.WU_DEFAULT_CELL_SIZE;
+import static com.example.thedragonslair.config.GameConfig.WU_WORLD_HEIGHT;
+import static com.example.thedragonslair.config.GameConfig.WU_WORLD_WIDTH;
 
 public class LoadingScreen extends GeneralScreen {
 
     private static final float PROGRESS_BAR_WIDTH = GameConfig.WU_WORLD_WIDTH;
-    private static final float PROGRESS_BAR_HEIGHT = GameConfig.WU_DEFAULT_CELL_SIZE*2;
+    private static final float PROGRESS_BAR_HEIGHT = WU_DEFAULT_CELL_SIZE;
     private static final Logger log = new Logger(LoadingScreen.class.getName(), Logger.DEBUG);
 
     protected OrthographicCamera camera;
@@ -31,23 +43,33 @@ public class LoadingScreen extends GeneralScreen {
     private float waitingTime; //Tiempo de margen que va a pasar DESPUÉS de cargar los assets
     private boolean changeScreen; //false por defecto
     protected Texture texture;
+    protected BitmapFont bmFont;
+    protected GameStrings gameStrings;
+    private static GlyphLayout glyphLayout;
 
     public LoadingScreen(MyGdxGame myGdxGame) {
         super(myGdxGame);
+
+        gameStrings = new GameStrings(LANGUAGE_SPA);
+
         this.loadingProgress = 0f;
         this.waitingTime = 0.75f;
         this.changeScreen = false;
+
+        camera = new OrthographicCamera();
+        viewport = new FitViewport(GameConfig.WU_WORLD_WIDTH, GameConfig.WU_WORLD_HEIGHT, camera);
+        renderer = new ShapeRenderer();
+
+        texture = new Texture(AssetsPaths.LOGO_PATH);
+        bmFont = new BitmapFont(Gdx.files.internal("fonts/dungrg.fnt"));
+        glyphLayout = new GlyphLayout();
+        glyphLayout.setText(bmFont,gameStrings.msgLoading);
     }
 
     @Override
     public void show() {
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
         log.debug("show");
-
-        camera = new OrthographicCamera();
-        viewport = new FitViewport(GameConfig.PIXEL_WIDTH,GameConfig.PIXEL_HEIGHT,camera);
-        renderer = new ShapeRenderer();
-        texture = new Texture(AssetsPaths.LOGO_PATH);
 
         loadStuff();
     }
@@ -66,19 +88,20 @@ public class LoadingScreen extends GeneralScreen {
         isGame.getBatch().setProjectionMatrix(camera.combined);
         isGame.getBatch().begin();
         this.drawBatch();
+        this.drawText();
         isGame.getBatch().end();
 
-        if(changeScreen){
+        if (changeScreen) {
             isGame.setScreen(new GameMainMenu(isGame));
         }
     }
 
-    private void update(float delta){
+    private void update(float delta) {
         CodeResources.waitmillisecs(400);
         loadingProgress = isGame.getAssetManager().getProgress(); //entre 0 y 1
-        if(isGame.getAssetManager().update()){ //true cuando todos los assets estén cargados
+        if (isGame.getAssetManager().update()) { //true cuando todos los assets estén cargados
             waitingTime -= delta;
-            if(waitingTime <= 0){
+            if (waitingTime <= 0) {
                 changeScreen = true;
             }
         }
@@ -87,39 +110,55 @@ public class LoadingScreen extends GeneralScreen {
     /**
      * Dibuja la barra de progreso
      */
-    private void draw(){
+    private void draw() {
 //        float progressBarX = (GameConfig.WU_WORLD_WIDTH-PROGRESS_BAR_WIDTH)/2;
 //        float progressBarY = (GameConfig.PIXEL_HEIGHT-PROGRESS_BAR_HEIGHT)/2;
 
         renderer.setColor(Color.BLACK);
-        renderer.rect(0, 0,
-                loadingProgress * PROGRESS_BAR_WIDTH, PROGRESS_BAR_HEIGHT);
+        renderer.rect(
+                0,
+                0,
+                loadingProgress * PROGRESS_BAR_WIDTH,
+                PROGRESS_BAR_HEIGHT);
     }
 
-    private void drawBatch(){
+    private void drawBatch() {
         log.debug(
                 GameConfig.WU_HALF_HEIGHT_CENTER + "x / " +
-                GameConfig.WU_HALF_HEIGHT_CENTER+ "y / " +
-                texture.getWidth()+ "x / " +
-                texture.getHeight() + "y"
+                        GameConfig.WU_HALF_HEIGHT_CENTER + "y / " +
+                        texture.getWidth() + "x / " +
+                        texture.getHeight() + "y"
         );
+
         isGame.getBatch().draw(texture,
-                GameConfig.WU_HALF_HEIGHT_CENTER,
-                GameConfig.WU_HALF_HEIGHT_CENTER,
-                texture.getWidth(),
-                texture.getHeight()
+                WU_WORLD_WIDTH/2-(texture.getWidth()/12)/2,
+                WU_WORLD_WIDTH/2-(texture.getHeight()/12)/2,
+                texture.getWidth()/12,
+                texture.getHeight()/12
+        );
+    }
+
+    private void drawText(){
+        bmFont.getData().setScale(1/4.5f);
+
+        bmFont.draw(
+                isGame.getBatch(),
+                gameStrings.msgLoading,
+                WU_WORLD_WIDTH/2-(glyphLayout.width*bmFont.getScaleX())/2, //con esto centra horizontal
+                WU_WORLD_HEIGHT/3-(glyphLayout.height*bmFont.getScaleY())/2
         );
 
     }
 
     /**
      * Le da tamaño a la pantalla
+     *
      * @param width
      * @param height
      */
     @Override
     public void resize(int width, int height) {
-        viewport.update(width,height,true);
+        viewport.update(width, height, true);
 //        viewport.update(width,height);
     }
 
@@ -149,24 +188,45 @@ public class LoadingScreen extends GeneralScreen {
     @Override
     public void dispose() {
         log.debug("dispose");
+
         renderer.dispose();
+        texture.dispose();
+        bmFont.dispose();
+
         renderer = null;
     }
 
-    private void loadStuff(){
+    private void loadStuff() {
         isGame.getAssetManager().load(AssetsDescriptors.LOGO_DES);
-
-        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_ANDANDO_DES);
-        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_ANDANDO01_DES);
-        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_ANDANDO02_DES);
-        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_ANDANDO03_DES);
-        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_ANDANDO04_DES);
-        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_ANDANDO05_DES);
-        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_ANDANDO06_DES);
-        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_ANDANDO07_DES);
-
-//        assetManager.load(AssetsDescriptors.FONT_COMIC_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.CUT_TITLE_DES);
         isGame.getAssetManager().load(AssetsDescriptors.BACKGROUND01_DES);
 
+        isGame.getAssetManager().load(AssetsDescriptors.ENEMIGO1_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.ENEMIGO2_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.ENEMIGO3_DES);
+
+        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_ANDANDO_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_ESPADA_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_GOLPEADO_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_LOGRO_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_MUERIENDO_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_PARADO_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.SIEGFRIED_SALTANDO_DES);
+
+        isGame.getAssetManager().load(AssetsDescriptors.LLAMAS_DES);
+
+        isGame.getAssetManager().load(AssetsDescriptors.PB_PARED_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.PB_SUELO_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.P1_PARED_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.P1_SUELO_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.P2_PARED_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.P2_SUELO_DES);
+
+        isGame.getAssetManager().load(AssetsDescriptors.NARRATIVE_FONT_DES);
+
+//        isGame.getAssetManager().load(AssetsDescriptors.SKIN_GLASSY_DES, Skin.class, new SkinLoader.SkinParameter("skin/skinsMaster/glassy/preview.png"));
+        isGame.getAssetManager().load(AssetsDescriptors.SKIN_GLASSY_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.SKIN_GOLDEN_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.SKIN_SQUARE_DES);
     }
 }

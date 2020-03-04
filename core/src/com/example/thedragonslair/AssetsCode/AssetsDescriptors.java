@@ -2,6 +2,8 @@ package com.example.thedragonslair.AssetsCode;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class AssetsDescriptors {
 
@@ -131,8 +133,28 @@ public class AssetsDescriptors {
     // VIDAS
     //_________________________________________________
 
-    public static final AssetDescriptor<Texture> VIDAS_DES
-            = new AssetDescriptor<Texture>(AssetsPaths.CUT_TITLE_PATH, Texture.class);
+//    public static final AssetDescriptor<Texture> VIDAS_DES
+//            = new AssetDescriptor<Texture>(AssetsPaths.CUT_TITLE_PATH, Texture.class);
+
+    //_________________________________________________
+    // FONT
+    //_________________________________________________
+
+    public static final AssetDescriptor<BitmapFont> NARRATIVE_FONT_DES
+            = new AssetDescriptor<BitmapFont>(AssetsPaths.NARRATIVE_FONT_PATH, BitmapFont.class);
+
+    //_________________________________________________
+    // SKIN
+    //_________________________________________________
+
+    public static final AssetDescriptor<Skin> SKIN_GLASSY_DES
+            = new AssetDescriptor<Skin>(AssetsPaths.SKIN_GLASSY_PATH, Skin.class);
+
+    public static final AssetDescriptor<Skin> SKIN_GOLDEN_DES
+            = new AssetDescriptor<Skin>(AssetsPaths.SKIN_GOLDEN_PATH, Skin.class);
+
+    public static final AssetDescriptor<Skin> SKIN_SQUARE_DES
+            = new AssetDescriptor<Skin>(AssetsPaths.SKIN_SQUARED_PATH, Skin.class);
 
     /**
      * ==================================

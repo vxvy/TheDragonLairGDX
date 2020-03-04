@@ -1,40 +1,64 @@
 package com.example.thedragonslair.Scenes.Screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.example.thedragonslair.MyGdxGame;
 import com.example.thedragonslair.Scenes.GeneralScreen;
-import com.example.thedragonslair.Personajes.MainCharacter.Siegfried;
 import com.example.thedragonslair.Scenes.Screens.PantallasDeJuego.GameScreen;
+import com.example.thedragonslair.config.GameStrings;
+import com.example.thedragonslair.util.CodeResources;
+
+import static com.example.thedragonslair.AssetsCode.AssetsPaths.BACKGROUND01_PATH;
+import static com.example.thedragonslair.AssetsCode.AssetsPaths.SKIN_GLASSY_PATH;
+import static com.example.thedragonslair.config.GameConfig.LANGUAGE_SPA;
 
 public class GameIsHappeningHere extends GeneralScreen {
 
+    private static final Logger log = new Logger(GameIsHappeningHere.class.getName(), Logger.DEBUG);
 //    Siegfried siegfried; //instanciamos el personaje principal al abrir el juego porque será el mismo en todas las pantallas de juego
-    protected AssetsHandler assetsHandler;
+    protected AssetManager assetManager;
     protected Stage stage;
-
+    protected Skin menu2Skin;
+    protected GameStrings gameStrings;
+    protected Texture backgroundTitle;
 
     public GameIsHappeningHere(MyGdxGame myGdxGame) {
         super(myGdxGame);
+        gameStrings = new GameStrings(LANGUAGE_SPA);
+
+        assetManager = myGdxGame.getAssetManager();
+        menu2Skin = assetManager.get(SKIN_GLASSY_PATH, Skin.class);
+
         stage = new Stage(new ScreenViewport());
 
-        Label title = new Label("Title Screen", isGame.gameSkin,"big-black");
+        backgroundTitle = assetManager.get(BACKGROUND01_PATH,Texture.class);
+        Image placeholderBackground = new Image(backgroundTitle);
+        placeholderBackground.setFillParent(true);
+        stage.addActor(placeholderBackground);
+
+        Label title = new Label(gameStrings.gameTitle, menu2Skin,"big");
         title.setAlignment(Align.center);
         title.setY(Gdx.graphics.getHeight()*2/3);
         title.setWidth(Gdx.graphics.getWidth());
         stage.addActor(title);
 
-        TextButton playButton = new TextButton("Start game", MyGdxGame.gameSkin);
-        playButton.setWidth(Gdx.graphics.getWidth()/2);
-        playButton.setPosition(Gdx.graphics.getWidth()/2-playButton.getWidth()/2,Gdx.graphics.getHeight()/2-playButton.getHeight()/2);
-        playButton.addListener(new InputListener(){
+        TextButton resumeButton = new TextButton(gameStrings.btnStrContinue, menu2Skin);
+        resumeButton.setWidth(Gdx.graphics.getWidth()/2);
+        resumeButton.setPosition(Gdx.graphics.getWidth()/2-resumeButton.getWidth()/2,Gdx.graphics.getHeight()/2-resumeButton.getHeight()/2);
+        resumeButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
 //                Gdx.app.log("123","Touched");
@@ -45,12 +69,12 @@ public class GameIsHappeningHere extends GeneralScreen {
                 return true;
             }
         });
-        stage.addActor(playButton);
+        stage.addActor(resumeButton);
 
-        TextButton optionsButton = new TextButton("Options",MyGdxGame.gameSkin);
-        optionsButton.setWidth(Gdx.graphics.getWidth()/2);
-        optionsButton.setPosition(Gdx.graphics.getWidth()/2-optionsButton.getWidth()/2,Gdx.graphics.getHeight()/4-optionsButton.getHeight()/2);
-        optionsButton.addListener(new InputListener(){
+        TextButton newGameButton = new TextButton(gameStrings.btnStrNewGame,menu2Skin);
+        newGameButton.setWidth(Gdx.graphics.getWidth()/2);
+        newGameButton.setPosition(Gdx.graphics.getWidth()/2-newGameButton.getWidth()/2,Gdx.graphics.getHeight()/4-newGameButton.getHeight()/2);
+        newGameButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
                 isGame.setScreen(new GameMainMenu(isGame));
@@ -60,7 +84,10 @@ public class GameIsHappeningHere extends GeneralScreen {
                 return true;
             }
         });
-        stage.addActor(optionsButton);
+        stage.addActor(newGameButton);
+
+        TextButton backButton = new TextButton("X",menu2Skin);
+//        backButton
     }
 
 
@@ -73,8 +100,8 @@ public class GameIsHappeningHere extends GeneralScreen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(1, 1, 1, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        CodeResources.clearScreen(Color.ORANGE);
+
         stage.act();
         stage.draw();
     }
@@ -96,12 +123,13 @@ public class GameIsHappeningHere extends GeneralScreen {
 
     @Override
     public void hide() {
-
+        log.debug("hide");
+        dispose();
     }
 
     @Override
     public void dispose() {
         stage.dispose();
-        assetsHandler.dispose(); //Al tener la retirada de recursos en assetsHandler, sólo es necesaria una llamada
+//        assetManager.dispose(); Se realiza este dispose en la clase principal para así ejecutarlo una sola vez
     }
 }

@@ -20,5 +20,8 @@ public class GameConfig {
     public static final float WU_HALF_WIDTH_CENTER = WU_WORLD_WIDTH /2f; //WORLD UNITS
     public static final float WU_HALF_HEIGHT_CENTER = WU_WORLD_HEIGHT /2f; //WORLD UNITS
 
-    public static final int WU_DEFAULT_CELL_SIZE = 5; //world units
+    public static final int WU_DEFAULT_CELL_SIZE = (int)WU_WORLD_HEIGHT/12; //world units
+
+    public static final String LANGUAGE_SPA = "SPANISH";
+    public static final String LANGUAGE_ENG = "ENGLISH";
 }
