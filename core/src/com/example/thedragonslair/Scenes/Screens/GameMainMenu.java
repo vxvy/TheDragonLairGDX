@@ -33,7 +33,7 @@ public class GameMainMenu extends GeneralScreen {
 
         stage = new Stage(new ScreenViewport());
 
-        GameStrings gameStrings = new GameStrings(LANGUAGE_SPA);
+        GameStrings gameStrings = new GameStrings(GameStrings.eLanguage.LANGUAGE_SPA);
 
         assetManager = myGdxGame.getAssetManager();
 

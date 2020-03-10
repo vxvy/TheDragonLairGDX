@@ -33,4 +33,5 @@ public class AssetsPaths {
     public static final String SKIN_GLASSY_PATH = "skin/skinsMaster/glassy/skin/glassy-ui.json";
     public static final String SKIN_SQUARED_PATH = "skin/skinsMaster/gdx-holo/skin/uiskin.json";
     public static final String SKIN_GOLDEN_PATH = "skin/skinsMaster/golden-spiral/skin/golden-ui-skin.json";
+    public static final String SKIN_NEON_PATH = "skin/skinsMaster/neon/skin/neon-ui.json";
 }

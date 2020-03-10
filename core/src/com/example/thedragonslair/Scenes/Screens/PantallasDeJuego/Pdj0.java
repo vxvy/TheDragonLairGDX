@@ -44,6 +44,7 @@ public class Pdj0 extends PantallaDeJuegoBase {
 
     @Override
     public void resize(int width, int height) {
+        viewport.update(width,height,true); //Técnicamente centra la cámara, pero pone el eje arriba izquierda???
 
     }
 

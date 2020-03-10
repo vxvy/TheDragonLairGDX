@@ -34,6 +34,9 @@ public class CodeResources {
     public static final float SUB_MONSTER_VALUE = 20;
     public static final float STRONG_MONSTER_VALUE = 30;
 
+    public static final Color COLOR_BRIGHT_ORANGY = fromRGB(239,66,0);
+    public static final Color COLOR_ORANGY = fromRGB(123,28,0);
+
     public static final Vector2 testVelVect2 = new Vector2(10, 0);
 
 //    public standing final Enemy EASY_ENEMY =
@@ -100,23 +103,40 @@ public class CodeResources {
         return enemigosNivel;
     }
 
+    /**
+     * Genera aleatoriamente los power ups del nivel en cuestión
+     * @param dungeonLevel
+     * @param dungeonDifficulty
+     * @param playerHealth
+     * @return
+     */
 
     public static ArrayList<PowerUpBase> generaPowerUps(int dungeonLevel, int dungeonDifficulty, int playerHealth) {
         ArrayList<PowerUpBase> powerUps = new ArrayList<PowerUpBase>();
         return powerUps;
     }
 
-    //Utility para limpiar pantalla
-
+    /**
+     * Limpia la pantalla, es decir: pinta por encima de lo que había antes con una capa del color especificado
+     * @param color nuevo color de fondo
+     */
     public static void clearScreen(Color color) {
         Gdx.gl.glClearColor(color.r, color.g, color.b, color.a);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
+    /**
+     * clearScreen por defecto, pinta negro
+     */
+
     public static void clearScreen() {
         clearScreen(Color.BLACK);
     }
 
+    /**
+     * Método para mantener a la espera el thread en uso
+     * @param milllies
+     */
 
     public static void waitmillisecs(long milllies){
         try {
@@ -124,6 +144,21 @@ public class CodeResources {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Convierte un color al formato RGBA8888 que usa libGDX
+     * @param r corresponde al rojo de 0 a 255
+     * @param g corresponde al verde de 0 a 255
+     * @param b corresponde al azul de 0 a 255
+     * @return Color correspondiente con opacidad máxima
+     */
+
+    public static Color fromRGB(int r, int g, int b) {
+        float RED = r / 255.0f;
+        float GREEN = g / 255.0f;
+        float BLUE = b / 255.0f;
+        return new Color(RED, GREEN, BLUE, 1);
     }
 
 }

@@ -24,4 +24,6 @@ public class GameConfig {
 
     public static final String LANGUAGE_SPA = "SPANISH";
     public static final String LANGUAGE_ENG = "ENGLISH";
+
+    public static final float FRAMES_PER_SECOND = 30f;
 }

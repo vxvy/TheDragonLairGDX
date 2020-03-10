@@ -156,6 +156,9 @@ public class AssetsDescriptors {
     public static final AssetDescriptor<Skin> SKIN_SQUARE_DES
             = new AssetDescriptor<Skin>(AssetsPaths.SKIN_SQUARED_PATH, Skin.class);
 
+    public static final AssetDescriptor<Skin> SKIN_NEON_DES
+            = new AssetDescriptor<Skin>(AssetsPaths.SKIN_NEON_PATH, Skin.class);
+
     /**
      * ==================================
      * Escenarios

@@ -16,8 +16,13 @@ public class GameStrings {
     public String siegD1;
 //    public String
 
-    public GameStrings(String language){
-        switch (language){
+    public enum eLanguage{
+        LANGUAGE_SPA,
+        LANGUAGE_ENG;
+    }
+
+    public GameStrings(eLanguage eLanguage){
+        switch (eLanguage){ //switch que usa los valor de enum
             case LANGUAGE_SPA:
                 gameTitle = "La guarida del Dragon";
                 btnStrStart = "Entrar en la mazmorra";
@@ -33,7 +38,7 @@ public class GameStrings {
                         "Hasta que un día, decidió adoptat a Fafnir el dragón y se acabó la tranquilidad, " +
                         "pues este se había metido en algún que otro berengenal aquí y allá." +
                         "Concretamente, ganándose la enemistad alguien llamado Siegfried...";
-                siegD1 = "¡FAFNIR! Malditas sean tus entrañas... Avaro bastardo, ¿cómo osas rehuír a mi encuentro? " +
+                siegD1 = "¡FAFNIR! Malditas sean tus entrañas... Avaro bastardo, ¿cómo osas rehuír mi encuentro? " +
                         "Me debes al menos la posibilidad de vengar a mi padre";
                 break;
             default:
@@ -45,6 +50,16 @@ public class GameStrings {
                 msgLoading = "Loagin assets, please wait...";
                 btnStrNewGame = "New Game";
                 btnStrContinue = "Continue";
+//                textStoryIntro = "Había una vez, un conejo mago morado llamado Moradín." +
+//                        "Moradín era un poco peculiar. En vez de vivir en una madriguera vivía en un castillo." +
+//                        "El terrible castillo Draconiano suscitaba rumores y creaba leyendas. Pero no era más que piedras." +
+//                        "..." +
+//                        "Hasta que un día, decidió adoptat a Fafnir el dragón y se acabó la tranquilidad, " +
+//                        "pues este se había metido en algún que otro berengenal aquí y allá." +
+//                        "Concretamente, ganándose la enemistad alguien llamado Siegfried...";
+//                siegD1 = "¡FAFNIR! Malditas sean tus entrañas... Avaro bastardo, ¿cómo osas rehuír mi encuentro? " +
+//                        "Me debes al menos la posibilidad de vengar a mi padre";
+
                 break;
         }
     }

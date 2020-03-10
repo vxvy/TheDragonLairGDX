@@ -2,16 +2,12 @@ package com.example.thedragonslair.Scenes.Screens.loading;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.AssetDescriptor;
-import com.badlogic.gdx.assets.loaders.SkinLoader;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -50,7 +46,7 @@ public class LoadingScreen extends GeneralScreen {
     public LoadingScreen(MyGdxGame myGdxGame) {
         super(myGdxGame);
 
-        gameStrings = new GameStrings(LANGUAGE_SPA);
+        gameStrings = new GameStrings(GameStrings.eLanguage.LANGUAGE_SPA);
 
         this.loadingProgress = 0f;
         this.waitingTime = 0.75f;
@@ -228,5 +224,6 @@ public class LoadingScreen extends GeneralScreen {
         isGame.getAssetManager().load(AssetsDescriptors.SKIN_GLASSY_DES);
         isGame.getAssetManager().load(AssetsDescriptors.SKIN_GOLDEN_DES);
         isGame.getAssetManager().load(AssetsDescriptors.SKIN_SQUARE_DES);
+        isGame.getAssetManager().load(AssetsDescriptors.SKIN_NEON_DES);
     }
 }
